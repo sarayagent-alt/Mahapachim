@@ -1,0 +1,6 @@
+{
+  "name": "מהפכים | עיצוב פנים",
+  "description": "סטודיו לעיצוב פנים לבתים וחללים קיימים. לראות אחרת את מה שכבר קיים — עיצוב מתוך הבנת האנשים והחיים שקורים בבית.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
