@@ -26,7 +26,7 @@ export default function App() {
     const parseUrl = () => {
       const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
       const hash = window.location.hash.replace(/^#\/?/, '');
-      const fullRoute = path || hash;
+      const fullRoute = hash || (path === 'Mahapachim' ? '' : path);
 
       if (fullRoute.startsWith('projects/')) {
         const slug = fullRoute.replace('projects/', '');
@@ -83,8 +83,8 @@ export default function App() {
   const handleNavigate = (page: PageView) => {
     setSelectedProject(null);
     setCurrentPage(page);
-    const newPath = page === 'home' ? '/' : `/${page}`;
-    if (window.location.pathname !== newPath) {
+    const newPath = page === 'home' ? '#/' : `#/${page}`;
+    if (window.location.hash !== newPath) {
       window.history.pushState({}, '', newPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -94,8 +94,8 @@ export default function App() {
   const handleSelectProject = (project: ProjectCaseStudy) => {
     setSelectedProject(project);
     setCurrentPage('projects');
-    const newPath = `/projects/${project.slug}`;
-    if (window.location.pathname !== newPath) {
+    const newPath = `#/projects/${project.slug}`;
+    if (window.location.hash !== newPath) {
       window.history.pushState({}, '', newPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -105,8 +105,8 @@ export default function App() {
   const handleBackToProjects = () => {
     setSelectedProject(null);
     setCurrentPage('projects');
-    if (window.location.pathname !== '/projects') {
-      window.history.pushState({}, '', '/projects');
+    if (window.location.hash !== '#/projects') {
+      window.history.pushState({}, '', '#/projects');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
